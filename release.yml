@@ -11,12 +11,12 @@ pool:
   vmImage: 'ubuntu-latest'
 resources:
   pipelines: 
-  - pipeline: 'Release Build'
+  - pipeline: 'release-package'
     source: 'Release Build'
     trigger: 
       branches:
         include: 
-        - experiment*
+        - experiment
 
 steps:
 - script: echo Hello, world!
