@@ -15,7 +15,7 @@ steps:
   displayName: 'Run a one-line script'
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '/deploy/arm'
+    SourceFolder: 'deploy/arm'
     Contents: '**.json'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/arm'
 - task: PublishBuildArtifacts@1
