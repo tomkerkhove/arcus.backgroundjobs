@@ -13,6 +13,8 @@ resources:
   pipelines: 
   - pipeline: 'release-package'
     source: 'Release Build'
+    trigger:
+     enabled: true
 
 steps:
 - script: echo Hello, world!
