@@ -9,17 +9,15 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+resources:
+  pipelines: 
+  - pipeline: 'Edm.Shared.Scripts'
+    source: 'Edm.Shared.Scripts'
+    trigger: 
+      branches:
+        include: 
+        - experiment*
 
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: 'deploy/arm'
-    Contents: '**.json'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)/arm'
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
