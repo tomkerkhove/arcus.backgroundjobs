@@ -10,8 +10,8 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 resources:
-  pipelines: 
-  - pipeline: 'release-package'
+  pipelines:
+  - pipeline: 'Release Build'
     source: 'Release Build'
     trigger:
      enabled: true
