@@ -11,8 +11,8 @@ pool:
   vmImage: 'ubuntu-latest'
 resources:
   pipelines: 
-  - pipeline: 'Edm.Shared.Scripts'
-    source: 'Edm.Shared.Scripts'
+  - pipeline: 'Release Build'
+    source: 'Release Build'
     trigger: 
       branches:
         include: 
@@ -21,3 +21,15 @@ resources:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
+- download: Release Build
+  artifact: 'drop'
+- task: DownloadBuildArtifacts@0
+  inputs:
+    buildType: 'specific'
+    project: 'c1c94d09-2b2e-4e9b-ba55-eef019ef1a9b'
+    pipeline: '89'
+    specificBuildWithTriggering: true
+    buildVersionToDownload: 'latest'
+    downloadType: 'single'
+    artifactName: 'drop'
+    downloadPath: '$(System.ArtifactsDirectory)'
