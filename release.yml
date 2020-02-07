@@ -13,10 +13,6 @@ resources:
   pipelines: 
   - pipeline: 'release-package'
     source: 'Release Build'
-    trigger: 
-      branches:
-        include: 
-        - experiment
 
 steps:
 - script: echo Hello, world!
